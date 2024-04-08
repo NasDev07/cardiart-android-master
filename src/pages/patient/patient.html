@@ -1,0 +1,129 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>{{ 'PATIENT.TITLE' | translate }}</ion-title>
+    <ion-buttons end>
+      <button ion-button class="done" (click)="done()" [disabled]="!profileForm.valid">
+        {{ 'PATIENT.DONE' | translate }}
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-list-header>
+      {{ 'PATIENT.BASIC_INFORMATION' | translate }}
+    </ion-list-header>
+    <div [formGroup]="profileForm" class="profile-content">
+      <ion-item>
+        <ion-label>
+          {{ 'PATIENT.SN' | translate }}
+        </ion-label>
+        <ion-input type="text" formControlName="sn"></ion-input>
+      </ion-item>
+      <div>
+        <ng-container *ngFor="let validation of validationMessages.sn">
+          <ion-item no-lines class="error-message" *ngIf="
+              profileForm.get('sn').hasError(validation.type) &&
+              (profileForm.get('sn').dirty || profileForm.get('sn').touched)
+            ">
+            {{ validation.message }}
+          </ion-item>
+        </ng-container>
+      </div>
+      <ion-item>
+        <ion-label>
+          {{ 'PATIENT.NAME' | translate }}
+        </ion-label>
+        <ion-input type="text" formControlName="name"></ion-input>
+      </ion-item>
+      <div>
+        <ng-container *ngFor="let validation of validationMessages.name">
+          <ion-item no-lines class="error-message" *ngIf="
+              profileForm.get('name').hasError(validation.type) &&
+              (profileForm.get('name').dirty || profileForm.get('name').touched)
+            ">
+            {{ validation.message }}
+          </ion-item>
+        </ng-container>
+      </div>
+      <ion-item>
+        <ion-label>
+          {{ 'PATIENT.ID' | translate }}
+        </ion-label>
+        <ion-input type="text" formControlName="id"></ion-input>
+      </ion-item>
+      <div>
+        <ng-container *ngFor="let validation of validationMessages.id">
+          <ion-item no-lines class="error-message" *ngIf="profileForm.get('id').hasError(validation.type)">
+            {{ validation.message }}
+          </ion-item>
+        </ng-container>
+      </div>
+      <ion-item>
+        <ion-label>
+          {{ 'PATIENT.SEX' | translate }}
+        </ion-label>
+        <div item-content class="segment">
+          <ion-segment formControlName="sex">
+            <ion-segment-button value="M">
+              {{ 'PATIENT.MALE' | translate }}
+            </ion-segment-button>
+            <ion-segment-button value="U">
+              {{ 'PATIENT.UNKNOWN' | translate }}
+            </ion-segment-button>
+            <ion-segment-button value="F">
+              {{ 'PATIENT.FEMALE' | translate }}
+            </ion-segment-button>
+          </ion-segment>
+        </div>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          {{ 'PATIENT.AGE' | translate }}
+        </ion-label>
+        <ion-input type="number" formControlName="age"></ion-input>
+      </ion-item>
+      <div>
+        <ng-container *ngFor="let validation of validationMessages.age">
+          <ion-item no-lines class="error-message" *ngIf="
+              profileForm.get('age').hasError(validation.type) &&
+              (profileForm.get('age').dirty || profileForm.get('age').touched)
+            ">
+            {{ validation.message }}
+          </ion-item>
+        </ng-container>
+      </div>
+      <ion-item>
+        <ion-label>{{ 'PATIENT.NOTE' | translate }}</ion-label>
+        <ion-textarea type="text" rows="4" formControlName="note"></ion-textarea>
+      </ion-item>
+      <div>
+        <ng-container *ngFor="let validation of validationMessages.note">
+          <ion-item no-lines class="error-message" *ngIf="
+              profileForm.get('note').hasError(validation.type) &&
+              (profileForm.get('note').dirty || profileForm.get('note').touched)
+            ">
+            {{ validation.message }}
+          </ion-item>
+        </ng-container>
+      </div>
+    </div>
+  </ion-list>
+</ion-content>
+
+<ion-footer no-border class="footer">
+  <ion-toolbar>
+    <ion-buttons left>
+      <button ion-button class="clean" (click)="clean()">
+        {{ 'PATIENT.CLEAN' | translate }}
+      </button>
+    </ion-buttons>
+    <ion-title></ion-title>
+    <ion-buttons right>
+      <button ion-button class="scan" (click)="scan()">
+        {{ 'PATIENT.SCAN' | translate }}
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

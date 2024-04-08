@@ -1,0 +1,44 @@
+page-devices {
+  .device-item {
+    background: #fff;
+    border-radius: 14px;
+
+    button[disabled],
+    [ion-button][disabled] {
+      background: #c7c7c7 !important;
+      opacity: 1;
+    }
+
+    .title {
+      font-size: 22px;
+    }
+
+    .sub-title {
+      font-size: 18px;
+      color: #949494;
+    }
+
+    .item-button-blue {
+      background-image: linear-gradient(-46deg, #76aef7 0%, #2771f3 100%);
+      color: #fff;
+      font-size: 20px;
+      width: 100px;
+      height: 40px;
+    }
+
+    .item-button-red {
+      background-image: linear-gradient(-135deg, #fc9f2b 0%, #ee3200 100%);
+      color: #fff;
+      font-size: 20px;
+      width: 100px;
+      height: 40px;
+    }
+  }
+
+  .no-devices {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}

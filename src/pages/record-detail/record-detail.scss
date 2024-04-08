@@ -1,0 +1,121 @@
+page-record-detail {
+  pinch-zoom img {
+    padding: 5px 5px 5px 5px;
+  }
+
+  pre {
+    font-family: 'Roboto', 'Helvetica Neue', sans-serif;
+    margin: 0px;
+    white-space: pre-wrap;
+  }
+
+  .minnesota-code {
+    margin: 5px 5px 0px 5px;
+    padding: 5px;
+    height: 120px;
+    background-color: #fff;
+    border: solid 1px;
+    overflow: auto;
+  }
+
+  .ami {
+    color: #ff0000;
+    font-weight: bold;
+  }
+
+  .loading-spinner {
+    width: 100%;
+    height: calc(100% - 120px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+  }
+
+  .col-no-font {
+    // avoid row padding
+    font-size: 0;
+  }
+
+  #waveform {
+    // overflow: auto;
+    overflow: visible;
+    display: none;
+
+    .wave-12mul1 {
+      /**
+       * Example (pxPerMm = 5, 25mm/s 10mm/mV Size for scale 2)
+       * schematic purse = 1 Grid = 5 pxPerMm * 5 sGrids = 25px
+       * ecg waveform = 5 pxPerMm * 5 sGrids * 5 Grids * 10 seconds + 10 padding = 1260px
+       * ecg parameters = 200px
+       */
+      // width: 1485px;
+      // width: 2250px; // pxPerMm = 8
+      // width: 2760px; // pxPerMm = 10
+      // width: 4290px;  // pxPerMm = 16
+
+      .parameter {
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* align horizontal */
+        align-items: left; /* align vertical */
+      }
+    }
+  }
+
+  #report {
+    // overflow: auto;
+    overflow: visible;
+    display: none;
+
+    .wave-3mul4 {
+      /**
+       * Example (pxPerMm = 5, 25mm/s 10mm/mV Size for scale 2)
+       * schematic purse = 1 Grid = 5 pxPerMm * 5 sGrids = 25px
+       * ecg waveform = 5 pxPerMm * 5 sGrids * 5 Grids * 10 seconds + 10 padding = 1260px
+       */
+      // width: 1285px;    // pxPerMm = 5
+      // width: 2050px; // pxPerMm = 8
+      // width: 4090px;  // pxPerMm = 16
+
+      .report-title {
+        font-size: 1.5em;
+      }
+
+      .bottom-panel {
+        font-size: 1em;
+
+        .left-panel {
+          .col {
+            padding: 2px;
+          }
+        }
+
+        .suggestion {
+          min-height: 10em;
+        }
+
+        .declare-content {
+          min-height: 3em;
+          position: relative;
+
+          div {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+          }
+        }
+      }
+
+      .border {
+        border: 1px solid #000;
+      }
+
+      .parameter {
+        display: flex;
+        justify-content: left; /* align horizontal */
+        align-items: center; /* align vertical */
+      }
+    }
+  }
+}

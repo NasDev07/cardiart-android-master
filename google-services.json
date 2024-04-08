@@ -1,0 +1,77 @@
+{
+  "project_info": {
+    "project_number": "793623350721",
+    "firebase_url": "https://cardiart-ecg-39939.firebaseio.com",
+    "project_id": "cardiart-ecg-39939",
+    "storage_bucket": "cardiart-ecg-39939.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:793623350721:android:13715284f4cf8ec8717340",
+        "android_client_info": {
+          "package_name": "com.imediplus.cardiart"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "793623350721-21q28k9bnu4r4c85r9m7b842ov0247s2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.imediplus.cardiart",
+            "certificate_hash": "f66bfcc3ed94d6363d7a0e4b02439fe3e69a4d10"
+          }
+        },
+        {
+          "client_id": "793623350721-rg5ibf5n6n9me9pj3ogi6sfbsaei9kmg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9RWLadocnh1OzLochA2HUF7hrFFLSaLk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "793623350721-rg5ibf5n6n9me9pj3ogi6sfbsaei9kmg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:793623350721:android:c76f3ad7e9256375717340",
+        "android_client_info": {
+          "package_name": "com.imediplus.cardiart.test"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "793623350721-rg5ibf5n6n9me9pj3ogi6sfbsaei9kmg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9RWLadocnh1OzLochA2HUF7hrFFLSaLk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "793623350721-rg5ibf5n6n9me9pj3ogi6sfbsaei9kmg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

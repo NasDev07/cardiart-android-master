@@ -1,0 +1,101 @@
+{
+  "COMMON": {
+    "PROCESSING": "處理中",
+    "ENABLE_DEBUG_MODE": "已啟動開發模式",
+    "OK": "好"
+  },
+  "EXAMINATION": {
+    "TITLE": "開始量測",
+    "SERIAL_NUMBER": "編號",
+    "ANALYSING": "心電模組分析中.."
+  },
+  "DEVICES": {
+    "TITLE": "裝置連線",
+    "CONNECT": "連線",
+    "DISCONNECT": "中斷",
+    "CONNECTING": "連線中",
+    "RECONNECTING": "重連中",
+    "NO_AVAILABLE_DEVICE": "無可連線的裝置",
+    "FAILED_TO_CONNECT": "連接失敗",
+    "BT_DISABLED": "藍芽關閉中，請先開啟藍芽",
+    "CONNECTED": "已連線",
+    "NONE_DEVICE_CONNECTED": "無裝置連線中"
+  },
+  "BARCODE": {
+    "TITLE": "掃描條碼",
+    "PROMPT_MESSAGE": "將條碼對準畫面即可讀取",
+    "BARCODE_LIMITATION": "條碼長度不可超過20字元和包含特殊字元符號",
+    "BARCODE_NOT_SUPPORT": "不支援此條碼",
+    "BARCODE_FORMAT_NOT_CORRECT": "訊息格式錯誤"
+  },
+  "RECORDS": {
+    "TITLE": "心電紀錄",
+    "RECORDS": "筆資料",
+    "EDIT": "編輯",
+    "CANCEL": "取消",
+    "DELETE": "刪除",
+    "DELETE_CONFIRM_TITLE": "刪除心電報告",
+    "DELETE_CONFIRM_MESSAGE": "您是否確定要刪除所選取的項目？",
+    "NOT_SELECTED_RECORD": "尚未選取心電紀錄"
+  },
+  "RECORDS_DETAIL": {
+    "REPORT": "心電報告",
+    "DISEASE_NORMAL": "無AMI",
+    "DISEASE_ABNORMAL": "不正常",
+    "DISEASE_UNKNOWN": "未知",
+    "SUGGESTION": "評估建議",
+    "WARNING_FIRST_ROW": "未經醫師確認",
+    "WARNING_SECOND_ROW": "本報告僅供醫師參考使用"
+  },
+  "SETTINGS": {
+    "TITLE": "系統設定",
+    "ECG_REPORT_SETTINGS": "心電報告顯示設定",
+    "MINNESOTA_CODE": "明尼蘇達碼",
+    "MINNESOTA_CODE_SETTINGS": "明尼蘇達碼設定",
+    "DISPLAY_MINNESOTA_CODE": "顯示明尼蘇達碼",
+    "SYMPTOM_INDICATION": "病徵提示",
+    "SWITCH_SETTING": "開關設定",
+    "ECG_EXAMINATION_SETTINGS": "心電採集設定",
+    "HIGH_PASS_FILTER": "高通濾波頻率",
+    "LOW_PASS_FILTER": "低通濾波頻率",
+    "AC_NOTCH_FILTER": "工頻帶組濾波頻率",
+    "EMG_FILTER": "肌電濾波",
+    "ECG_MODULE_VERSION": "心電模組版本",
+    "APP_VERSION": "APP版本",
+    "VERSION": "版本號碼",
+    "DEVICE_FW_VERSION": "已連線裝置韌體版本",
+    "OFF": "關閉",
+    "HP": "高",
+    "LP": "低",
+    "AC": "工",
+    "EMG": "肌"
+  },
+  "PATIENT": {
+    "TITLE": "病患資料",
+    "BASIC_INFORMATION": "基本資料",
+    "SN": "編號",
+    "NAME": "姓名",
+    "ID": "身份證字號",
+    "SEX": "性別",
+    "MALE": "男",
+    "FEMALE": "女",
+    "UNKNOWN": "未知",
+    "YEARS_OLD": "歲",
+    "AGE": "年齡",
+    "NOTE": "備註內容",
+    "DONE": "完成",
+    "CLEAN": "清空",
+    "SCAN": "掃描"
+  },
+  "MESSAGES": {
+    "SERIAL_NUMBER_REQUIRED": "編號是必要的",
+    "SERIAL_NUMBER_MAX_LENGTH": "編號超過最大長度",
+    "NAME_MAX_LENGTH": "姓名超過最大長度",
+    "AGE_MAX_LENGTH": "年齡超過最大長度",
+    "NOTE_MAX_LENGTH": "備註超過最大長度",
+    "SAVE_RECORD_FAIL": "檢測資料儲存失敗",
+    "INVALID_ID": "身份證格式錯誤",
+    "UNEXPECTED_ERROR": "不預期錯誤",
+    "ENABLE_LOCATION_SERVICE": "請先開啟定位服務"
+  }
+}

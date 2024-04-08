@@ -1,0 +1,77 @@
+<ng-container *ngIf="!platform.is('tablet')">
+  <ion-header>
+    <ion-navbar color="primary">
+      <ion-title>{{ 'RECORDS.TITLE' | translate }}</ion-title>
+      <ion-buttons end>
+        <button ion-button (click)="editOrCancel()">
+          {{ getEditString() }}
+        </button>
+      </ion-buttons>
+    </ion-navbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list>
+      <ion-item *ngFor="let record of records" (click)="itemSelected(record)">
+        <ion-label>
+          <h2 class="title">{{ getItemTitle(record) }}</h2>
+          <h3 class="sub-title">
+            {{ record.createdAt | date: 'short' }}
+          </h3>
+        </ion-label>
+        <ion-checkbox item-end [hidden]="!isEditable" [checked]="recordsChecked.indexOf(record.id) !== -1"
+          (ionChange)="onRecordCheck(record.id, $event)"></ion-checkbox>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+
+  <ion-footer [hidden]="!isEditable">
+    <ion-toolbar>
+      <ion-buttons right>
+        <button ion-button (click)="confirmDelete()">
+          {{ 'RECORDS.DELETE' | translate }}
+        </button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-footer>
+</ng-container>
+
+<ng-container *ngIf="platform.is('tablet')">
+  <ion-menu [content]="nav">
+    <ion-header>
+      <ion-navbar color="primary">
+        <ion-title>{{ 'RECORDS.TITLE' | translate }}</ion-title>
+        <ion-buttons end>
+          <button ion-button (click)="editOrCancel()">
+            {{ getEditString() }}
+          </button>
+        </ion-buttons>
+      </ion-navbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-item *ngFor="let record of records" menuClose (click)="itemSelected(record)">
+          <ion-label>
+            <h2 class="title">{{ getItemTitle(record) }}</h2>
+            <h3 class="sub-title">
+              {{ record.createdAt | date: 'yyyy/MM/dd h:mm a' }}
+            </h3>
+          </ion-label>
+          <ion-checkbox item-end [hidden]="!isEditable" [checked]="recordsChecked.indexOf(record) !== -1"
+            (ionChange)="onRecordCheck(record, $event)"></ion-checkbox>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+    <ion-footer [hidden]="!isEditable">
+      <ion-toolbar>
+        <ion-buttons right>
+          <button ion-button class="delete-btn" (click)="confirmDelete()">
+            {{ 'RECORDS.DELETE' | translate }}
+          </button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-footer>
+  </ion-menu>
+
+  <ion-nav #nav [root]="rootPage"></ion-nav>
+</ng-container>

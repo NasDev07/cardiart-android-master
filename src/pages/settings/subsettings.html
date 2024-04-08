@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title *ngIf="group === 0">
+      {{ 'SETTINGS.MINNESOTA_CODE_SETTINGS' | translate }}
+    </ion-title>
+    <ion-title *ngIf="group === 1">{{ filter.name }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngIf="group === 0">
+    <ion-list-header>
+      {{ 'SETTINGS.SWITCH_SETTING' | translate }}
+    </ion-list-header>
+    <ion-item>
+      <ion-label>
+        {{ 'SETTINGS.DISPLAY_MINNESOTA_CODE' | translate }}
+      </ion-label>
+      <ion-toggle (ngModelChange)="onSwitchChange(0, $event)"
+        [(ngModel)]="settingsState && settingsState.showMinnesotaCode"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        {{ 'SETTINGS.SYMPTOM_INDICATION' | translate }}
+      </ion-label>
+      <ion-toggle (ngModelChange)="onSwitchChange(1, $event)"
+        [(ngModel)]="settingsState && settingsState.symptomIndication"></ion-toggle>
+    </ion-item>
+  </ion-list>
+
+  <ion-list *ngIf="group === 1" radio-group [(ngModel)]="selectedItem" (ionChange)="onFilterChange($event)">
+    <ion-item *ngFor="let item of filter.value">
+      <ion-label> {{ item }}Hz </ion-label>
+      <ion-radio [value]="item"></ion-radio>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        {{ 'SETTINGS.OFF' | translate }}
+      </ion-label>
+      <ion-radio [value]="'0'"></ion-radio>
+    </ion-item>
+  </ion-list>
+</ion-content>

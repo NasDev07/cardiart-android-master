@@ -1,0 +1,124 @@
+<ion-content>
+  <ion-item class="header" no-lines padding text-nowrap>
+    <h2 class="title">
+      {{ 'EXAMINATION.SERIAL_NUMBER' | translate }}
+    </h2>
+    <p class="sub-title">
+      {{ patientState?.sn }}
+    </p>
+    <ion-thumbnail item-end (click)="goPatient()">
+      <img src="assets/imgs/user@2x.png" />
+    </ion-thumbnail>
+  </ion-item>
+  <ion-grid class="panel" padding showWhen="portrait">
+    <ion-row class="row-4">
+      <ion-col col-12>
+        <button ion-item no-lines text-center class="grid-content-examination" (click)="goExamination()"
+          [disabled]="!currectDevice">
+          <div class="direction-row">
+            <img src="assets/imgs/ECG_line@2x.png" />
+            <h2>{{ 'EXAMINATION.TITLE' | translate }}</h2>
+          </div>
+        </button>
+      </ion-col>
+    </ion-row>
+    <ion-row class="row-4">
+      <ion-col col-6>
+        <button ion-item no-lines text-center class="grid-content" (click)="goDevices()">
+          <img src="assets/imgs/Bluetooth@2x.png" />
+          <h2>{{ 'DEVICES.TITLE' | translate }}</h2>
+          <h3 *ngIf="currectDevice">
+            {{ currectDevice?.name }} ({{ 'DEVICES.CONNECTED' | translate }})
+          </h3>
+          <h3 *ngIf="!currectDevice">
+            {{ 'DEVICES.NONE_DEVICE_CONNECTED' | translate }}
+          </h3>
+        </button>
+      </ion-col>
+      <ion-col col-6>
+        <button ion-item no-lines text-center class="grid-content" (click)="scanBarcode()">
+          <img src="assets/imgs/barcode@2x.png" />
+          <h2>{{ 'BARCODE.TITLE' | translate }}</h2>
+          <h3>Barcode / QR code</h3>
+        </button>
+      </ion-col>
+    </ion-row>
+    <ion-row class="row-4">
+      <ion-col col-6>
+        <button ion-item no-lines text-center class="grid-content" (click)="goRecords()">
+          <img src="assets/imgs/list@2x.png" />
+          <h2>{{ 'RECORDS.TITLE' | translate }}</h2>
+          <h3>{{ records.length }} {{ 'RECORDS.RECORDS' | translate }}</h3>
+        </button>
+      </ion-col>
+      <ion-col col-6>
+        <button ion-item no-lines text-center class="grid-content" (click)="goSettings()">
+          <img src="assets/imgs/settings@2x.png" />
+          <h2>{{ 'SETTINGS.TITLE' | translate }}</h2>
+          <h3>{{ getSettingsInfo() }}</h3>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid class="panel" padding showWhen="landscape">
+    <ion-row class="row-12">
+      <ion-col col-4>
+        <ion-row class="row-12">
+          <ion-col>
+            <button ion-item no-lines text-center class="grid-content-examination" (click)="goExamination()"
+              [disabled]="!currectDevice">
+              <img src="assets/imgs/ECG_line@2x.png" />
+              <h2>{{ 'EXAMINATION.TITLE' | translate }}</h2>
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+      <ion-col col-4>
+        <ion-row class="row-6">
+          <ion-col>
+            <button ion-item no-lines text-center class="grid-content" (click)="goDevices()">
+              <img src="assets/imgs/Bluetooth@2x.png" />
+              <h2>{{ 'DEVICES.TITLE' | translate }}</h2>
+              <h3 *ngIf="currectDevice">
+                {{ currectDevice?.name }} ({{ 'DEVICES.CONNECTED' | translate }})
+              </h3>
+              <h3 *ngIf="!currectDevice">
+                {{ 'DEVICES.NONE_DEVICE_CONNECTED' | translate }}
+              </h3>
+            </button>
+          </ion-col>
+        </ion-row>
+        <ion-row class="row-6">
+          <ion-col>
+            <button ion-item no-lines text-center class="grid-content" (click)="goRecords()">
+              <img src="assets/imgs/list@2x.png" />
+              <h2>{{ 'RECORDS.TITLE' | translate }}</h2>
+              <h3>{{ records.length }} {{ 'RECORDS.RECORDS' | translate }}</h3>
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+      <ion-col col-4>
+        <ion-row class="row-6">
+          <ion-col>
+            <button ion-item no-lines text-center class="grid-content" (click)="scanBarcode()">
+              <img src="assets/imgs/barcode@2x.png" />
+              <h2>{{ 'BARCODE.TITLE' | translate }}</h2>
+              <h3>Barcode / QR code</h3>
+            </button>
+          </ion-col>
+        </ion-row>
+        <ion-row class="row-6">
+          <ion-col>
+            <button ion-item no-lines text-center class="grid-content" (click)="goSettings()">
+              <img src="assets/imgs/settings@2x.png" />
+              <h2>{{ 'SETTINGS.TITLE' | translate }}</h2>
+              <h3>{{ getSettingsInfo() }}</h3>
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

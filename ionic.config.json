@@ -1,0 +1,7 @@
+{
+  "name": "CaRDIaRT ECG",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

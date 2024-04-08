@@ -1,0 +1,85 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>{{ 'SETTINGS.TITLE' | translate }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-list-header class="header">
+      {{ 'SETTINGS.ECG_REPORT_SETTINGS' | translate }}
+    </ion-list-header>
+    <ion-item (click)="select(0)">
+      <ion-label>
+        {{ 'SETTINGS.MINNESOTA_CODE' | translate }}
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-list>
+    <ion-list-header class="header">
+      {{ 'SETTINGS.ECG_EXAMINATION_SETTINGS' | translate }}
+    </ion-list-header>
+    <ion-item (click)="select(1, 0)">
+      <ion-label>
+        {{ 'SETTINGS.HIGH_PASS_FILTER' | translate }}
+      </ion-label>
+      <div item-content>
+        <span class="value">
+          {{ changeLang(settingsState?.highPassFilter) }}
+        </span>
+      </div>
+    </ion-item>
+    <ion-item (click)="select(1, 1)">
+      <ion-label>
+        {{ 'SETTINGS.LOW_PASS_FILTER' | translate }}
+      </ion-label>
+      <div item-content>
+        <span class="value">{{ changeLang(settingsState?.lowPassFilter) }}</span>
+      </div>
+    </ion-item>
+    <ion-item (click)="select(1, 2)">
+      <ion-label>
+        {{ 'SETTINGS.AC_NOTCH_FILTER' | translate }}
+      </ion-label>
+      <div item-content>
+        <span class="value">{{ changeLang(settingsState?.ACNotchFilter) }}</span>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        {{ 'SETTINGS.EMG_FILTER' | translate }}
+      </ion-label>
+      <ion-toggle (ngModelChange)="onChange($event)" [(ngModel)]="settingsState && settingsState.EMGFilter">
+      </ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        {{ 'SETTINGS.ECG_MODULE_VERSION' | translate }}
+      </ion-label>
+      <div item-content>
+        <span class="value">{{ ecgModuleVersion | async }}</span>
+      </div>
+    </ion-item>
+  </ion-list>
+  <ion-list>
+    <ion-list-header class="header">
+      {{ 'SETTINGS.APP_VERSION' | translate }}
+    </ion-list-header>
+    <ion-item (click)="triggerDebugMode()">
+      <ion-label>
+        {{ 'SETTINGS.VERSION' | translate }}
+      </ion-label>
+      <div item-content>
+        <span class="value">{{ appVersion }}</span>
+      </div>
+    </ion-item>
+    <ion-item *ngIf="isDebugEnabled">
+      <ion-label>
+        {{ 'SETTINGS.DEVICE_FW_VERSION' | translate }}
+      </ion-label>
+      <div item-content>
+        <span class="value">{{ deviceVersion }}</span>
+      </div>
+    </ion-item>
+  </ion-list>
+</ion-content>

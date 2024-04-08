@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>{{ 'DEVICES.TITLE' | translate }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-12 col-md-6 *ngFor="let device of foundDevices">
+        <ion-item no-lines class="device-item">
+          <h2 class="title">Device</h2>
+          <h3 class="sub-title" *ngIf="device.name">{{ device.name }}</h3>
+          <button ion-button round item-end class="item-button-blue"
+            *ngIf="!isConnectingDevice(device) && !isCurrentDevice(device)" (click)="connect(device)"
+            [disabled]="devices && devices.connectedDevice">
+            {{ 'DEVICES.CONNECT' | translate }}
+          </button>
+          <button ion-button round item-end class="item-button-red" *ngIf="isCurrentDevice(device)"
+            (click)="disconnect(device)">
+            {{ 'DEVICES.DISCONNECT' | translate }}
+          </button>
+          <button ion-button round item-end class="item-button-blue" *ngIf="isConnectingDevice(device)">
+            {{ 'DEVICES.CONNECTING' | translate }}
+          </button>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <div class="no-devices" *ngIf="foundDevices.length === 0">
+    <h2 ion-text color="gray">{{ 'DEVICES.NO_AVAILABLE_DEVICE' | translate }}</h2>
+  </div>
+</ion-content>

@@ -1,0 +1,313 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>25mm/s 10mm/mV</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-padding>
+  <div class="content" *ngIf="!isShow('tablet')">
+    <div class="main-panel">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6>
+            <div class="wave-point" [class.leadoff]="ecgLeads[0].leadOff">
+              {{ getPointName(ecgLeads[0]) }}
+            </div>
+            <ecg-rt [data]="ecgLeads[0].data" [config]="ecgConfig" [sampleRate]="sampleRate"></ecg-rt>
+          </ion-col>
+          <ion-col col-6>
+            <div class="wave-point" [class.leadoff]="ecgLeads[6].leadOff">
+              {{ getPointName(ecgLeads[6]) }}
+            </div>
+            <ecg-rt [data]="ecgLeads[6].data" [config]="ecgConfig" [sampleRate]="sampleRate"></ecg-rt>
+          </ion-col>
+          <ion-col col-6>
+            <div class="wave-point" [class.leadoff]="ecgLeads[1].leadOff">
+              {{ getPointName(ecgLeads[1]) }}
+            </div>
+            <ecg-rt [data]="ecgLeads[1].data" [config]="ecgConfig" [sampleRate]="sampleRate"></ecg-rt>
+          </ion-col>
+          <ion-col col-6>
+            <div class="wave-point" [class.leadoff]="ecgLeads[7].leadOff">
+              {{ getPointName(ecgLeads[7]) }}
+            </div>
+            <ecg-rt [data]="ecgLeads[7].data" [config]="ecgConfig" [sampleRate]="sampleRate"></ecg-rt>
+          </ion-col>
+          <ion-col col-6>
+            <div class="wave-point" [class.leadoff]="ecgLeads[2].leadOff">
+              {{ getPointName(ecgLeads[2]) }}
+            </div>
+            <ecg-rt [data]="ecgLeads[2].data" [config]="ecgConfig" [sampleRate]="sampleRate"></ecg-rt>
+          </ion-col>
+          <ion-col col-6>
+            <div class="wave-point" [class.leadoff]="ecgLeads[8].leadOff">
+              {{ getPointName(ecgLeads[8]) }}
+            </div>
+            <ecg-rt [data]="ecgLeads[8].data" [config]="ecgConfig" [sampleRate]="sampleRate"></ecg-rt>
+          </ion-col>
+          <ion-col col-6>
+            <div class="wave-point" [class.leadoff]="ecgLeads[3].leadOff">
+              {{ getPointName(ecgLeads[3]) }}
+            </div>
+            <ecg-rt [data]="ecgLeads[3].data" [config]="ecgConfig" [sampleRate]="sampleRate"></ecg-rt>
+          </ion-col>
+          <ion-col col-6>
+            <div class="wave-point" [class.leadoff]="ecgLeads[9].leadOff">
+              {{ getPointName(ecgLeads[9]) }}
+            </div>
+            <ecg-rt [data]="ecgLeads[9].data" [config]="ecgConfig" [sampleRate]="sampleRate"></ecg-rt>
+          </ion-col>
+          <ion-col col-6>
+            <div class="wave-point" [class.leadoff]="ecgLeads[4].leadOff">
+              {{ getPointName(ecgLeads[4]) }}
+            </div>
+            <ecg-rt [data]="ecgLeads[4].data" [config]="ecgConfig" [sampleRate]="sampleRate"></ecg-rt>
+          </ion-col>
+          <ion-col col-6>
+            <div class="wave-point" [class.leadoff]="ecgLeads[10].leadOff">
+              {{ getPointName(ecgLeads[10]) }}
+            </div>
+            <ecg-rt [data]="ecgLeads[10].data" [config]="ecgConfig" [sampleRate]="sampleRate"></ecg-rt>
+          </ion-col>
+          <ion-col col-6>
+            <div class="wave-point" [class.leadoff]="ecgLeads[5].leadOff">
+              {{ getPointName(ecgLeads[5]) }}
+            </div>
+            <ecg-rt [data]="ecgLeads[5].data" [config]="ecgConfig" [sampleRate]="sampleRate"></ecg-rt>
+          </ion-col>
+          <ion-col col-6>
+            <div class="wave-point" [class.leadoff]="ecgLeads[11].leadOff">
+              {{ getPointName(ecgLeads[11]) }}
+            </div>
+            <ecg-rt [data]="ecgLeads[11].data" [config]="ecgConfig" [sampleRate]="sampleRate"></ecg-rt>
+          </ion-col>
+          <ion-col col-12>
+            <div class="wave-point" [class.leadoff]="ecgLeads[1].leadOff">
+              {{ getPointName(ecgLeads[1]) }}
+            </div>
+            <ecg-rt [data]="ecgLeads[1].data" [config]="ecgConfig" [sampleRate]="sampleRate">
+            </ecg-rt>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+    <div class="control-panel">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-4 align-self-center text-center class="heart">
+            <img src="assets/imgs/Heart@2x.png" />
+            {{ heartRate | number: '1.0-0' }}
+          </ion-col>
+          <ion-col col-4 align-self-center text-center>
+            <img class="play" src="assets/imgs/recording@2x.png" *ngIf="!isRecording" (click)="startRecord()" />
+            <img class="play" src="assets/imgs/stop@2x.png" *ngIf="isRecording" (click)="stopRecord(false)" />
+          </ion-col>
+          <ion-col col-4 align-self-center text-center class="time">
+            <span [style.color]="isRecording ? '#F7741A' : '#FFFFFF'">
+              {{ recordTime }}s
+            </span>
+            / {{ totalExaminationTime }}s
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+
+  <div class="tablet-content" *ngIf="isShow('tablet', 'p')">
+    <ion-grid class="main-panel">
+      <ion-row>
+        <ion-col col-4>
+          <div class="wave-point" [class.leadoff]="ecgLeads[0].leadOff">
+            {{ getPointName(ecgLeads[0]) }}
+          </div>
+          <ecg-rt [data]="ecgLeads[0].data" [config]="ecgConfig" [sampleRate]="sampleRate"></ecg-rt>
+        </ion-col>
+        <ion-col col-4>
+          <div class="wave-point" [class.leadoff]="ecgLeads[1].leadOff">
+            {{ getPointName(ecgLeads[1]) }}
+          </div>
+          <ecg-rt [data]="ecgLeads[1].data" [config]="ecgConfig" [sampleRate]="sampleRate"></ecg-rt>
+        </ion-col>
+        <ion-col col-4>
+          <div class="wave-point" [class.leadoff]="ecgLeads[2].leadOff">
+            {{ getPointName(ecgLeads[2]) }}
+          </div>
+          <ecg-rt [data]="ecgLeads[2].data" [config]="ecgConfig" [sampleRate]="sampleRate"></ecg-rt>
+        </ion-col>
+        <ion-col col-4>
+          <div class="wave-point" [class.leadoff]="ecgLeads[3].leadOff">
+            {{ getPointName(ecgLeads[3]) }}
+          </div>
+          <ecg-rt [data]="ecgLeads[3].data" [config]="ecgConfig" [sampleRate]="sampleRate"></ecg-rt>
+        </ion-col>
+        <ion-col col-4>
+          <div class="wave-point" [class.leadoff]="ecgLeads[4].leadOff">
+            {{ getPointName(ecgLeads[4]) }}
+          </div>
+          <ecg-rt [data]="ecgLeads[4].data" [config]="ecgConfig" [sampleRate]="sampleRate"></ecg-rt>
+        </ion-col>
+        <ion-col col-4>
+          <div class="wave-point" [class.leadoff]="ecgLeads[5].leadOff">
+            {{ getPointName(ecgLeads[5]) }}
+          </div>
+          <ecg-rt [data]="ecgLeads[5].data" [config]="ecgConfig" [sampleRate]="sampleRate"></ecg-rt>
+        </ion-col>
+        <ion-col col-4>
+          <div class="wave-point" [class.leadoff]="ecgLeads[6].leadOff">
+            {{ getPointName(ecgLeads[6]) }}
+          </div>
+          <ecg-rt [data]="ecgLeads[6].data" [config]="ecgConfig" [sampleRate]="sampleRate"></ecg-rt>
+        </ion-col>
+        <ion-col col-4>
+          <div class="wave-point" [class.leadoff]="ecgLeads[7].leadOff">
+            {{ getPointName(ecgLeads[7]) }}
+          </div>
+          <ecg-rt [data]="ecgLeads[7].data" [config]="ecgConfig" [sampleRate]="sampleRate"></ecg-rt>
+        </ion-col>
+        <ion-col col-4>
+          <div class="wave-point" [class.leadoff]="ecgLeads[8].leadOff">
+            {{ getPointName(ecgLeads[8]) }}
+          </div>
+          <ecg-rt [data]="ecgLeads[8].data" [config]="ecgConfig" [sampleRate]="sampleRate"></ecg-rt>
+        </ion-col>
+        <ion-col col-4>
+          <div class="wave-point" [class.leadoff]="ecgLeads[9].leadOff">
+            {{ getPointName(ecgLeads[9]) }}
+          </div>
+          <ecg-rt [data]="ecgLeads[9].data" [config]="ecgConfig" [sampleRate]="sampleRate"></ecg-rt>
+        </ion-col>
+        <ion-col col-4>
+          <div class="wave-point" [class.leadoff]="ecgLeads[10].leadOff">
+            {{ getPointName(ecgLeads[10]) }}
+          </div>
+          <ecg-rt [data]="ecgLeads[10].data" [config]="ecgConfig" [sampleRate]="sampleRate"></ecg-rt>
+        </ion-col>
+        <ion-col col-4>
+          <div class="wave-point" [class.leadoff]="ecgLeads[11].leadOff">
+            {{ getPointName(ecgLeads[11]) }}
+          </div>
+          <ecg-rt [data]="ecgLeads[11].data" [config]="ecgConfig" [sampleRate]="sampleRate"></ecg-rt>
+        </ion-col>
+        <ion-col col-12>
+          <div class="wave-point" [class.leadoff]="ecgLeads[1].leadOff">
+            {{ getPointName(ecgLeads[1]) }}
+          </div>
+          <ecg-rt [data]="ecgLeads[1].data" [config]="ecgConfig" [sampleRate]="sampleRate">
+          </ecg-rt>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <div class="control-panel">
+      <div class="time" [style.color]="isRecording ? '#F7741A' : '#FFFFFF'">
+        {{ recordTime }}s
+      </div>
+      <div>
+        <img class="play" src="assets/imgs/recording@2x.png" *ngIf="!isRecording" (click)="startRecord()" />
+        <img class="play" src="assets/imgs/stop@2x.png" *ngIf="isRecording" (click)="stopRecord(false)" />
+      </div>
+      <div class="heart">
+        <img src="assets/imgs/Heart@2x.png" />
+        {{ heartRate | number: '1.0-0' }}
+      </div>
+    </div>
+  </div>
+
+  <div class="tablet-content" *ngIf="isShow('tablet', 'l')">
+    <ion-grid class="main-panel">
+      <ion-row>
+        <ion-col col-3>
+          <div class="wave-point" [class.leadoff]="ecgLeads[0].leadOff">
+            {{ getPointName(ecgLeads[0]) }}
+          </div>
+          <ecg-rt [data]="ecgLeads[0].data" [config]="ecgConfig" [sampleRate]="sampleRate"></ecg-rt>
+        </ion-col>
+        <ion-col col-3>
+          <div class="wave-point" [class.leadoff]="ecgLeads[3].leadOff">
+            {{ getPointName(ecgLeads[3]) }}
+          </div>
+          <ecg-rt [data]="ecgLeads[3].data" [config]="ecgConfig" [sampleRate]="sampleRate"></ecg-rt>
+        </ion-col>
+        <ion-col col-3>
+          <div class="wave-point" [class.leadoff]="ecgLeads[6].leadOff">
+            {{ getPointName(ecgLeads[6]) }}
+          </div>
+          <ecg-rt [data]="ecgLeads[6].data" [config]="ecgConfig" [sampleRate]="sampleRate"></ecg-rt>
+        </ion-col>
+        <ion-col col-3>
+          <div class="wave-point" [class.leadoff]="ecgLeads[9].leadOff">
+            {{ getPointName(ecgLeads[9]) }}
+          </div>
+          <ecg-rt [data]="ecgLeads[9].data" [config]="ecgConfig" [sampleRate]="sampleRate"></ecg-rt>
+        </ion-col>
+        <ion-col col-3>
+          <div class="wave-point" [class.leadoff]="ecgLeads[1].leadOff">
+            {{ getPointName(ecgLeads[1]) }}
+          </div>
+          <ecg-rt [data]="ecgLeads[1].data" [config]="ecgConfig" [sampleRate]="sampleRate"></ecg-rt>
+        </ion-col>
+        <ion-col col-3>
+          <div class="wave-point" [class.leadoff]="ecgLeads[4].leadOff">
+            {{ getPointName(ecgLeads[4]) }}
+          </div>
+          <ecg-rt [data]="ecgLeads[4].data" [config]="ecgConfig" [sampleRate]="sampleRate"></ecg-rt>
+        </ion-col>
+        <ion-col col-3>
+          <div class="wave-point" [class.leadoff]="ecgLeads[7].leadOff">
+            {{ getPointName(ecgLeads[7]) }}
+          </div>
+          <ecg-rt [data]="ecgLeads[7].data" [config]="ecgConfig" [sampleRate]="sampleRate"></ecg-rt>
+        </ion-col>
+        <ion-col col-3>
+          <div class="wave-point" [class.leadoff]="ecgLeads[10].leadOff">
+            {{ getPointName(ecgLeads[10]) }}
+          </div>
+          <ecg-rt [data]="ecgLeads[10].data" [config]="ecgConfig" [sampleRate]="sampleRate"></ecg-rt>
+        </ion-col>
+        <ion-col col-3>
+          <div class="wave-point" [class.leadoff]="ecgLeads[2].leadOff">
+            {{ getPointName(ecgLeads[2]) }}
+          </div>
+          <ecg-rt [data]="ecgLeads[2].data" [config]="ecgConfig" [sampleRate]="sampleRate"></ecg-rt>
+        </ion-col>
+        <ion-col col-3>
+          <div class="wave-point" [class.leadoff]="ecgLeads[5].leadOff">
+            {{ getPointName(ecgLeads[5]) }}
+          </div>
+          <ecg-rt [data]="ecgLeads[5].data" [config]="ecgConfig" [sampleRate]="sampleRate"></ecg-rt>
+        </ion-col>
+        <ion-col col-3>
+          <div class="wave-point" [class.leadoff]="ecgLeads[8].leadOff">
+            {{ getPointName(ecgLeads[8]) }}
+          </div>
+          <ecg-rt [data]="ecgLeads[8].data" [config]="ecgConfig" [sampleRate]="sampleRate"></ecg-rt>
+        </ion-col>
+        <ion-col col-3>
+          <div class="wave-point" [class.leadoff]="ecgLeads[11].leadOff">
+            {{ getPointName(ecgLeads[11]) }}
+          </div>
+          <ecg-rt [data]="ecgLeads[11].data" [config]="ecgConfig" [sampleRate]="sampleRate"></ecg-rt>
+        </ion-col>
+        <ion-col col-12>
+          <div class="wave-point" [class.leadoff]="ecgLeads[1].leadOff">
+            {{ getPointName(ecgLeads[1]) }}
+          </div>
+          <ecg-rt [data]="ecgLeads[1].data" [config]="ecgConfig" [sampleRate]="sampleRate">
+          </ecg-rt>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <div class="control-panel">
+      <div class="time" [style.color]="isRecording ? '#F7741A' : '#FFFFFF'">
+        {{ recordTime }}s
+      </div>
+      <div>
+        <img class="play" src="assets/imgs/recording@2x.png" *ngIf="!isRecording" (click)="startRecord()" />
+        <img class="play" src="assets/imgs/stop@2x.png" *ngIf="isRecording" (click)="stopRecord(false)" />
+      </div>
+      <div class="heart">
+        <img src="assets/imgs/Heart@2x.png" />
+        {{ heartRate | number: '1.0-0' }}
+      </div>
+    </div>
+  </div>
+</ion-content>

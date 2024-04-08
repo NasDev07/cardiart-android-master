@@ -1,0 +1,112 @@
+page-examination {
+  .content {
+    background-color: #000;
+    height: 100%;
+
+    .main-panel {
+      height: 90%;
+
+      ion-grid {
+        height: 100%;
+        padding: 2px;
+      }
+      ion-row {
+        height: 14.28%;
+      }
+
+      ion-col {
+        height: 100%;
+        padding: 2px;
+      }
+    }
+
+    .control-panel {
+      height: 10%;
+
+      ion-grid {
+        height: 100%;
+        padding: 2px;
+      }
+      ion-row {
+        height: 100%;
+      }
+      ion-col {
+        padding: 2px;
+      }
+    }
+  }
+
+  .tablet-content {
+    background-color: #000;
+    height: 100%;
+    display: flex;
+
+    @media only screen and (orientation: portrait) {
+      padding-top: 55px;
+      padding-bottom: 55px;
+    }
+
+    .main-panel {
+      flex: 9;
+      height: 100%;
+      ion-row {
+        height: 20%;
+
+        @media only screen and (orientation: landscape) {
+          height: 25%;
+        }
+      }
+
+      ion-col {
+        height: 100%;
+      }
+    }
+
+    .control-panel {
+      flex: 1;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+
+      & div {
+        padding: 45px 0;
+      }
+    }
+  }
+
+  .wave-point {
+    font-size: 16px;
+    color: #fff;
+    position: absolute;
+    margin-top: 5px;
+    margin-left: 5px;
+    z-index: 5;
+
+    &.leadoff {
+      color: red;
+    }
+  }
+
+  .heart {
+    font-size: 20px;
+    color: #fff;
+    img {
+      width: 15px;
+      height: 13px;
+    }
+  }
+
+  .play {
+    width: 41px;
+    height: 41px;
+    display: block;
+    margin: auto;
+  }
+
+  .time {
+    font-size: 20px;
+    color: #fff;
+  }
+}

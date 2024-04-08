@@ -1,0 +1,29 @@
+<ion-list>
+  <ion-item (click)="select('PDF')">
+    <ion-thumbnail item-start>
+      <img src="assets/imgs/export-pdf.jpg" />
+    </ion-thumbnail>
+    PDF
+  </ion-item>
+  <ion-item (click)="select('JPG')">
+    <ion-thumbnail item-start>
+      <img src="assets/imgs/export-jpg.jpg" />
+    </ion-thumbnail>
+    JPG
+  </ion-item>
+  <ion-item (click)="select('XML')">
+    <ion-thumbnail item-start>
+      <img src="assets/imgs/export-xml.jpg" />
+    </ion-thumbnail>
+    XML
+  </ion-item>
+  <ion-item (click)="select('Delete')">
+    <ion-thumbnail item-start>
+      <img src="assets/imgs/delete.jpg" />
+    </ion-thumbnail>
+    {{ 'RECORDS.DELETE' | translate }}
+  </ion-item>
+  <ion-item *ngIf="isDebugEnabled" (click)="select('export-debug-files')">
+    匯出Debug檔案
+  </ion-item>
+</ion-list>

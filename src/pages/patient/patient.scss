@@ -1,0 +1,49 @@
+page-patient {
+  .done {
+    color: #488aff !important;
+    background-color: #fff;
+    padding: 0 2.6rem;
+    border-radius: 64px;
+    font-size: 2rem;
+  }
+
+  .profile-content {
+    .item-input .label-md,
+    ion-label {
+      color: #7d7d7d;
+    }
+
+    .error-message ion-label {
+      color: color($colors, danger);
+    }
+
+    .segment {
+      min-width: 200px;
+    }
+  }
+
+  .footer {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 40px;
+
+    .clean {
+      color: #488aff !important;
+      background-color: #fff;
+      padding: 0 3.9rem;
+      border: 1px solid #488aff;
+      border-radius: 64px;
+      font-size: 2rem;
+      height: 2.2em;
+    }
+
+    .scan {
+      color: #fff !important;
+      background-color: #488aff;
+      padding: 0 3.9rem;
+      border-radius: 64px;
+      font-size: 2rem;
+      height: 2.2em;
+    }
+  }
+}

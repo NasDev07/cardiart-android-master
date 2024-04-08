@@ -1,0 +1,101 @@
+{
+  "COMMON": {
+    "PROCESSING": "Processing",
+    "ENABLE_DEBUG_MODE": "The development mode is enabled",
+    "OK": "OK"
+  },
+  "EXAMINATION": {
+    "TITLE": "Examination",
+    "SERIAL_NUMBER": "SN",
+    "ANALYSING": "ECG module analysing.."
+  },
+  "DEVICES": {
+    "TITLE": "Device",
+    "CONNECT": "Connect",
+    "DISCONNECT": "Disconnect",
+    "CONNECTING": "Connecting",
+    "RECONNECTING": "Reconnecting",
+    "NO_AVAILABLE_DEVICE": "No available device",
+    "FAILED_TO_CONNECT": "Connection failed",
+    "BT_DISABLED": "The Bluetooth is disabled, please turn on the Bluetooth first",
+    "CONNECTED": "Connected",
+    "NONE_DEVICE_CONNECTED": "None device connected"
+  },
+  "BARCODE": {
+    "TITLE": "Scan Barcode",
+    "PROMPT_MESSAGE": "Scan the barcode by aligning it with the screen",
+    "BARCODE_LIMITATION": "The barcode length cannot exceed 20 characters and contains special character symbols",
+    "BARCODE_NOT_SUPPORT": "This barcode is not supported",
+    "BARCODE_FORMAT_NOT_CORRECT": "Message format error"
+  },
+  "RECORDS": {
+    "TITLE": "Record",
+    "RECORDS": "Records",
+    "EDIT": "Edit",
+    "CANCEL": "Cancel",
+    "DELETE": "Delete",
+    "DELETE_CONFIRM_TITLE": "Delete ECG report",
+    "DELETE_CONFIRM_MESSAGE": "Are you sure you want to delete the selected item?",
+    "NOT_SELECTED_RECORD": "The ECG record has not been selected"
+  },
+  "RECORDS_DETAIL": {
+    "REPORT": "ECG Report",
+    "DISEASE_NORMAL": "No AMI",
+    "DISEASE_ABNORMAL": "Not normal",
+    "DISEASE_UNKNOWN": "Unknown",
+    "SUGGESTION": "Evaluation suggestion",
+    "WARNING_FIRST_ROW": "Not confirmed by physician",
+    "WARNING_SECOND_ROW": "This report is for physician's reference only"
+  },
+  "SETTINGS": {
+    "TITLE": "Settings",
+    "ECG_REPORT_SETTINGS": "ECG report setting",
+    "MINNESOTA_CODE": "Minnesota code",
+    "MINNESOTA_CODE_SETTINGS": "Minnesota code setting",
+    "DISPLAY_MINNESOTA_CODE": "Show minnesota code",
+    "SYMPTOM_INDICATION": "Symptom indication",
+    "SWITCH_SETTING": "Switch setting",
+    "ECG_EXAMINATION_SETTINGS": "ECG examination settings",
+    "HIGH_PASS_FILTER": "High-pass filter frequency",
+    "LOW_PASS_FILTER": "Low-pass filter frequency",
+    "AC_NOTCH_FILTER": "AC notch filter frequency",
+    "EMG_FILTER": "EMG filter",
+    "ECG_MODULE_VERSION": "ECG module version",
+    "APP_VERSION": "APP version",
+    "VERSION": "version",
+    "DEVICE_FW_VERSION": "Connected device firmware version",
+    "OFF": "OFF",
+    "HP": "HP",
+    "LP": "LP",
+    "AC": "AC",
+    "EMG": "EMG"
+  },
+  "PATIENT": {
+    "TITLE": "Patient information",
+    "BASIC_INFORMATION": "Basic Information",
+    "SN": "SN",
+    "NAME": "name",
+    "ID": "ID number",
+    "SEX": "Gender",
+    "MALE": "Man",
+    "FEMALE": "Woman",
+    "UNKNOWN": "Unknown",
+    "YEARS_OLD": "years old",
+    "AGE": "Age",
+    "NOTE": "Remarks",
+    "DONE": "Done",
+    "CLEAN": "Clean",
+    "SCAN": "Scan"
+  },
+  "MESSAGES": {
+    "SERIAL_NUMBER_REQUIRED": "Serinal number is necessary",
+    "SERIAL_NUMBER_MAX_LENGTH": "Serinal number exceeds maximum length",
+    "NAME_MAX_LENGTH": "Name exceeds maximum length",
+    "AGE_MAX_LENGTH": "Age exceeds the maximum length",
+    "NOTE_MAX_LENGTH": "Remarks exceed the maximum length",
+    "SAVE_RECORD_FAIL": "Record saved failed",
+    "INVALID_ID": "The ID is in the wrong format",
+    "UNEXPECTED_ERROR": "Unexpected error",
+    "ENABLE_LOCATION_SERVICE": "Please enable the Location service"
+  }
+}

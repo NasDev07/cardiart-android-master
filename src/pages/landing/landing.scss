@@ -1,0 +1,22 @@
+page-landing {
+  ion-content {
+    background-image: url('../assets/imgs/landing_bg_port.png');
+    @media only screen and (orientation: landscape) {
+      background-image: url('../assets/imgs/landing_bg_land.png');
+    }
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+
+    .version {
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+      padding-bottom: 3.3rem;
+      text-align: center;
+      font-size: 2.8rem;
+      color: #ffffff;
+    }
+  }
+}

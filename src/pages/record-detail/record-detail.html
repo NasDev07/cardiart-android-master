@@ -1,0 +1,322 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      {{ getTitle() }}
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button *ngIf="intentState && intentState.vendorId" (click)="save($event)">
+        <ion-icon name="share"></ion-icon>
+      </button>
+      <button ion-button *ngIf="intentState && !intentState.vendorId" (click)="export($event)">
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="minnesota-code" *ngIf="suggestion || diseaseCase">
+    <pre><span class="ami" *ngIf="diseaseCase === 3">{{getDiseaseCaseMessage()}}</span>{{ suggestion }}</pre>
+  </div>
+
+  <pinch-zoom *ngIf="!isLoading" [double-tap]="false" doubleTap (onOnePointerDoubleTap)="onOnePointerDoubleTap($event)"
+    (onTwoPointersDoubleTap)="onTwoPointersDoubleTap($event)">
+    <img [src]="imageSrc" />
+  </pinch-zoom>
+
+  <div class="loading-spinner" *ngIf="isLoading">
+    <ion-spinner></ion-spinner>
+  </div>
+
+  <div id="waveform">
+    <ion-grid class="wave-12mul1 ecg-waveform" no-padding>
+      <ion-row>
+        <ion-col class="col-no-font">
+          <ecg-v2 [ecgLeads]="ecgLeads" [type]=1 [config]="ecgConfig" [scaleX]="scaleX" [scaleY]="scaleY"
+            [pxPerMm]="pxPerMm" [sampleRate]="sampleRate" [totalSeconds]="totalSeconds" [scale]="scale"
+            (onRendered)="onWaveformRendered($event)"></ecg-v2>
+        </ion-col>
+        <ion-col class="parameter">
+          <p>
+            HR:
+            <span *ngIf="ecgPara && ecgPara.hr && ecgPara.hr[0] !== 0">
+              {{ ecgPara.hr[1] | number: '1.0-0' }}bmp
+            </span>
+          </p>
+          <p>
+            RR:
+            <span *ngIf="ecgPara && ecgPara.rr && ecgPara.rr[0] !== 0">
+              {{ ecgPara.rr[1] | number: '1.0-0' }}ms
+            </span>
+          </p>
+          <p>
+            PR:
+            <span *ngIf="ecgPara && ecgPara.pr && ecgPara.pr[0] !== 0">
+              {{ ecgPara.pr[1] | number: '1.0-0' }}ms
+            </span>
+          </p>
+          <p>
+            QRS:
+            <span *ngIf="ecgPara && ecgPara.qrs && ecgPara.qrs[0] !== 0">
+              {{ ecgPara.qrs[1] | number: '1.0-0' }}ms
+            </span>
+          </p>
+          <p>
+            Pd:
+            <span *ngIf="ecgPara && ecgPara.pd && ecgPara.pd[0] !== 0">
+              {{ ecgPara.pd[1] | number: '1.0-0' }}ms
+            </span>
+          </p>
+          <p>
+            QT:
+            <span *ngIf="ecgPara && ecgPara.qt && ecgPara.qt[0] !== 0">
+              {{ ecgPara.qt[1] | number: '1.0-0' }}ms
+            </span>
+          </p>
+          <p>
+            QTc:
+            <span *ngIf="ecgPara && ecgPara.qtc && ecgPara.qtc[0] !== 0">
+              {{ ecgPara.qtc[1] | number: '1.0-0' }}ms
+            </span>
+          </p>
+          <p>
+            QTdis:
+            <span *ngIf="ecgPara && ecgPara.qtdis && ecgPara.qtdis[0] !== 0">
+              {{ ecgPara.qtdis[1] | number: '1.0-0' }}ms
+            </span>
+          </p>
+          <p>
+            QTmax{{ ecgPara && ecgPara.qtmax && ecgPara.qtmax[0] !== 0 ? '('+ecgPara.qtmax[0]+')' : ''}}:
+            <span *ngIf="ecgPara && ecgPara.qtmax && ecgPara.qtmax[0] !== 0">
+              {{ ecgPara.qtmax[1] | number: '1.0-0' }}ms
+            </span>
+          </p>
+          <p>
+            QTmin{{ ecgPara && ecgPara.qtmin && ecgPara.qtmin[0] !== 0 ? '('+ecgPara.qtmin[0]+')' : ''}}:
+            <span *ngIf="ecgPara && ecgPara.qtmin && ecgPara.qtmin[0] !== 0">
+              {{ ecgPara.qtmin[1] | number: '1.0-0' }}ms
+            </span>
+          </p>
+          <p>
+            Paxis:
+            <span *ngIf="ecgPara && ecgPara.paxis && ecgPara.paxis[0] !== 0">
+              {{ ecgPara.paxis[1] | number: '1.0-0' }}&deg;
+            </span>
+          </p>
+          <p>
+            QRSaxis:
+            <span *ngIf="ecgPara && ecgPara.qrsaxis && ecgPara.qrsaxis[0] !== 0">
+              {{ ecgPara.qrsaxis[1] | number: '1.0-0' }}&deg;
+            </span>
+          </p>
+          <p>
+            Taxis:
+            <span *ngIf="ecgPara && ecgPara.taxis && ecgPara.taxis[0] !== 0">
+              {{ ecgPara.taxis[1] | number: '1.0-0' }}&deg;
+            </span>
+          </p>
+          <p>
+            SV1:
+            <span *ngIf="ecgPara && ecgPara.sv1 && ecgPara.sv1[0] !== 0">
+              {{ ecgPara.sv1[1] | number: '1.2-2' }}mV
+            </span>
+          </p>
+          <p>
+            RV5:
+            <span *ngIf="ecgPara && ecgPara.rv5 && ecgPara.rv5[0] !== 0">
+              {{ ecgPara.rv5[1] | number: '1.2-2' }}mV
+            </span>
+          </p>
+          <p>
+            RV1:
+            <span *ngIf="ecgPara && ecgPara.rv1 && ecgPara.rv1[0] !== 0">
+              {{ ecgPara.rv1[1] | number: '1.2-2' }}mV
+            </span>
+          </p>
+          <p>
+            SV5:
+            <span *ngIf="ecgPara && ecgPara.sv5 && ecgPara.sv5[0] !== 0">
+              {{ ecgPara.sv5[1] | number: '1.2-2' }}mV
+            </span>
+          </p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <div class="parameter">
+            {{ getParameterString() }}
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <div id="report">
+    <div class="wave-3mul4">
+      <ion-grid>
+        <ion-row class="report-title" no-padding>
+          <ion-col text-center no-padding>
+            {{ 'RECORDS_DETAIL.REPORT' | translate }}
+          </ion-col>
+        </ion-row>
+        <ion-row no-padding>
+          <ion-col no-padding>{{ getPdfTitle() }}</ion-col>
+          <ion-col text-right no-padding>{{ getDateTimeForReport() }}</ion-col>
+        </ion-row>
+        <ion-row class="ecg-waveform" no-padding>
+          <ion-col class="col-no-font border" no-padding>
+            <div>
+              <ecg-v2 [ecgLeads]="ecgLeads" [type]=2 [config]="ecgConfig" [scaleX]=2 [scaleY]=2 [pxPerMm]="pxPerMm"
+                [sampleRate]="sampleRate" [totalSeconds]="totalSeconds" [scale]="scale"></ecg-v2>
+            </div>
+            <div class="parameter">
+              {{ getParameterString(true) }}
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-grid class="bottom-panel">
+        <ion-row>
+          <ion-col class="border">
+            <ion-grid class="left-panel">
+              <ion-row>
+                <ion-col>
+                  HR:
+                  <span *ngIf="ecgPara && ecgPara.hr && ecgPara.hr[0] !== 0">
+                    {{ ecgPara.hr[1] | number: '1.0-0' }}bmp
+                  </span>
+                </ion-col>
+                <ion-col>
+                  QT:
+                  <span *ngIf="ecgPara && ecgPara.qt && ecgPara.qt[0] !== 0">
+                    {{ ecgPara.qt[1] | number: '1.0-0' }}ms
+                  </span>
+                </ion-col>
+                <ion-col>
+                  Paxis:
+                  <span *ngIf="ecgPara && ecgPara.paxis && ecgPara.paxis[0] !== 0">
+                    {{ ecgPara.paxis[1] | number: '1.0-0' }}&deg;
+                  </span>
+                </ion-col>
+                <ion-col>
+                  RV1:
+                  <span *ngIf="ecgPara && ecgPara.rv1 && ecgPara.rv1[0] !== 0">
+                    {{ ecgPara.rv1[1] | number: '1.2-2' }}mV
+                  </span>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  RR:
+                  <span *ngIf="ecgPara && ecgPara.rr && ecgPara.rr[0] !== 0">
+                    {{ ecgPara.rr[1] | number: '1.0-0' }}ms
+                  </span>
+                </ion-col>
+                <ion-col>
+                  QTc:
+                  <span *ngIf="ecgPara && ecgPara.qtc && ecgPara.qtc[0] !== 0">
+                    {{ ecgPara.qtc[1] | number: '1.0-0' }}ms
+                  </span>
+                </ion-col>
+                <ion-col>
+                  QRSaxis:
+                  <span *ngIf="
+                      ecgPara && ecgPara.qrsaxis && ecgPara.qrsaxis[0] !== 0
+                    ">
+                    {{ ecgPara.qrsaxis[1] | number: '1.0-0' }}&deg;
+                  </span>
+                </ion-col>
+                <ion-col>
+                  SV5:
+                  <span *ngIf="ecgPara && ecgPara.sv5 && ecgPara.sv5[0] !== 0">
+                    {{ ecgPara.sv5[1] | number: '1.2-2' }}mV
+                  </span>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  PR:
+                  <span *ngIf="ecgPara && ecgPara.pr && ecgPara.pr[0] !== 0">
+                    {{ ecgPara.pr[1] | number: '1.0-0' }}ms
+                  </span>
+                </ion-col>
+                <ion-col>
+                  QTdis:
+                  <span *ngIf="
+                      ecgPara && ecgPara.qtdis && ecgPara.qtdis[0] !== 0
+                    ">
+                    {{ ecgPara.qtdis[1] | number: '1.0-0' }}ms
+                  </span>
+                </ion-col>
+                <ion-col>
+                  Taxis:
+                  <span *ngIf="ecgPara && ecgPara.taxis && ecgPara.taxis[0] !== 0">
+                    {{ ecgPara.taxis[1] | number: '1.0-0' }}&deg;
+                  </span>
+                </ion-col>
+                <ion-col></ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  QRS:
+                  <span *ngIf="ecgPara && ecgPara.qrs && ecgPara.qrs[0] !== 0">
+                    {{ ecgPara.qrs[1] | number: '1.0-0' }}ms
+                  </span>
+                </ion-col>
+                <ion-col>
+                  QTmax{{ ecgPara && ecgPara.qtmax && ecgPara.qtmax[0] !== 0 ? '('+ecgPara.qtmax[0]+')' : ''}}:
+                  <span *ngIf="ecgPara && ecgPara.qtmax && ecgPara.qtmax[0] !== 0">
+                    {{ ecgPara.qtmax[1] | number: '1.0-0' }}ms
+                  </span>
+                </ion-col>
+                <ion-col>
+                  SV1:
+                  <span *ngIf="ecgPara && ecgPara.sv1 && ecgPara.sv1[0] !== 0">
+                    {{ ecgPara.sv1[1] | number: '1.2-2' }}mV
+                  </span>
+                </ion-col>
+                <ion-col></ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  Pd:
+                  <span *ngIf="ecgPara && ecgPara.pd && ecgPara.pd[0] !== 0">
+                    {{ ecgPara.pd[1] | number: '1.0-0' }}ms
+                  </span>
+                </ion-col>
+                <ion-col>
+                  QTmin{{ ecgPara && ecgPara.qtmin && ecgPara.qtmin[0] !== 0 ? '('+ecgPara.qtmin[0]+')' : ''}}:
+                  <span *ngIf="ecgPara && ecgPara.qtmin && ecgPara.qtmin[0] !== 0">
+                    {{ ecgPara.qtmin[1] | number: '1.0-0' }}ms
+                  </span>
+                </ion-col>
+                <ion-col>
+                  RV5:
+                  <span *ngIf="ecgPara && ecgPara.rv5 && ecgPara.rv5[0] !== 0">
+                    {{ ecgPara.rv5[1] | number: '1.2-2' }}mV
+                  </span>
+                </ion-col>
+                <ion-col></ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-col>
+          <ion-col class="border">
+            <div class="suggestion" [style.visibility]="settingsState && suggestion ? 'visible' : 'hidden'">
+              {{'RECORDS_DETAIL.SUGGESTION' | translate}}<br />{{ suggestion }}
+              <pre class="ami" *ngIf="diseaseCase === 3">{{ getDiseaseCaseMessage() }}</pre>
+            </div>
+            <div class="declare-content">
+              <div>
+                {{ 'RECORDS_DETAIL.WARNING_FIRST_ROW' | translate }}
+                <br />{{ 'RECORDS_DETAIL.WARNING_SECOND_ROW' | translate }}
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+</ion-content>
